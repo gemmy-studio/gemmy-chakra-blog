@@ -1,0 +1,26 @@
+.swiper {
+  overflow: visible !important;
+}
+.swiper-container {
+  overflow: visible;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: #fff;
+  opacity: 0.6;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  color: black !important;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+.swiper-pagination-bullets {
+  bottom: var(--swiper-pagination-bottom, -40px) !important;
+}
+.swiper-pagination-bullet {
+  background: var(--theme-color) !important;
+}
