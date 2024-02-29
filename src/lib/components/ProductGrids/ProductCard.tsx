@@ -11,7 +11,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-
+import NextLink from 'next/link';
 import { FavouriteButton } from './FavouriteButton';
 import { PriceTag } from './PriceTag';
 import { Rating } from './Rating';
@@ -66,6 +66,7 @@ export const ProductCard = (props: Props) => {
           Add to cart
         </Button>
         <Link
+          as={NextLink}
           textDecoration="underline"
           fontWeight="medium"
           color={useColorModeValue('gray.600', 'gray.400')}

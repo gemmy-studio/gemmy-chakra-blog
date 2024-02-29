@@ -7,13 +7,15 @@ import './custom-swiper-styles.scss';
 import { ContentCarousel } from './ContentCarousel';
 import { ContentCard } from '../ContentCard';
 import { contents } from '../_data';
+import { ViewAllCard } from '../ViewAllCard';
 
 export const ContentCarousels = () => (
   <Box
     maxW="7xl"
     mx="auto"
     px={{ base: '4', md: '8' }}
-    py={{ base: '12', md: '16' }}
+    pt={{ base: '12', md: '16' }}
+    pb={{ base: '16', md: '20' }}
   >
     <ContentCarousel>
       {contents.slice(0, 8).map((content) => (
@@ -22,12 +24,9 @@ export const ContentCarousels = () => (
         </SwiperSlide>
       ))}
       <SwiperSlide>
-        <ContentCard
+        <ViewAllCard
           content={{
-            id: '',
-            name: '블로그 전체보기',
-            imageUrl: '',
-            description: '',
+            title: '블로그 전체보기',
             linkUrl: '/blog',
           }}
         />

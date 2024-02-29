@@ -60,7 +60,7 @@ export const CallToActions: React.FC<CallToActionsProps> = ({
               {buttons.map((button, index) => (
                 <Button
                   key={index}
-                  as={NextLink}
+                  as={button.href ? NextLink : undefined}
                   href={button.href}
                   colorScheme={themeColor}
                   variant={button.variant}
