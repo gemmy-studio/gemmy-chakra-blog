@@ -16,6 +16,7 @@ import NextLink from 'next/link';
 
 import { Content } from './_data';
 import { AiOutlineHeart, AiOutlineMessage } from 'react-icons/ai';
+import useTimeAgo from '../../hooks/useTimeAgo';
 interface Props {
   content: Content;
   rootProps?: StackProps;
@@ -35,6 +36,8 @@ export const ContentCard = (props: Props) => {
     commentsCount,
     likesCount,
   } = content;
+  const fromTime = useTimeAgo(postedAt);
+
   return (
     <Stack spacing={{ base: '1', md: '2' }} {...rootProps}>
       <Stack
@@ -65,7 +68,7 @@ export const ContentCard = (props: Props) => {
         </Box>
         <Stack>
           <Stack spacing="1">
-            <Text fontWeight="medium" color="fg.primary" h="6">
+            <Text fontWeight="medium" color="fg.primary" noOfLines={1} h="6">
               {title}
             </Text>
           </Stack>
@@ -83,19 +86,19 @@ export const ContentCard = (props: Props) => {
         <Text fontSize="sm" color="fg.muted" noOfLines={1}>
           {creator}
         </Text>
-        <Text fontSize="sm" color="fg.subtle" noOfLines={1}>
-          {postedAt}
+        <Text fontSize="sm" color="fg.subtle" whiteSpace="nowrap">
+          {fromTime}
         </Text>
         <Spacer />
         <HStack spacing="1">
           <Icon color="fg.subtle" as={AiOutlineHeart} />
-          <Text fontSize="sm" color="fg.subtle" noOfLines={1}>
+          <Text fontSize="sm" color="fg.subtle">
             {likesCount}
           </Text>
         </HStack>
         <HStack spacing="1" h="8">
           <Icon color="fg.subtle" as={AiOutlineMessage} />
-          <Text fontSize="sm" color="fg.subtle" noOfLines={1}>
+          <Text fontSize="sm" color="fg.subtle">
             {commentsCount}
           </Text>
         </HStack>
