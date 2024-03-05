@@ -2,7 +2,6 @@ import { Box } from '@chakra-ui/react';
 import { SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import './custom-swiper-styles.scss';
 
 import { ContentCarousel } from './ContentCarousel';
 import { ContentCard } from '../ContentCard';
