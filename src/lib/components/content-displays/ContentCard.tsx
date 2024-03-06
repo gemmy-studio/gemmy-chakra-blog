@@ -14,29 +14,42 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { Content } from './_data';
 import { AiOutlineHeart, AiOutlineMessage } from 'react-icons/ai';
 import useTimeAgo from '../../hooks/useTimeAgo';
-interface Props {
-  content: Content;
+import decompressContent from '../../utils/decompressContent';
+import { useEffect, useState } from 'react';
+import extractAndJoinText from '../../utils/extractAndJoinText';
+
+interface ContentCardProps {
+  content: any;
   rootProps?: StackProps;
 }
 
-export const ContentCard = (props: Props) => {
+export const ContentCard = (props: ContentCardProps) => {
   const { content, rootProps } = props;
-  const {
-    id,
-    title,
-    imageUrl,
-    description,
-    linkUrl,
-    creator,
-    creatorImage,
-    postedAt,
-    commentsCount,
-    likesCount,
-  } = content;
+  const title = content.TITLE;
+  const imageUrl = content.IMAGE_LIST;
+  const linkUrl = content.LINK;
+  const creator = content.AppMember.NICKNAME;
+  const creatorImage = content.AppMember.IMAGE;
+  const postedAt = content.CREATED_AT;
+  const commentsCount = content.commentCnt;
+  const likesCount = content.Likes.length;
   const fromTime = useTimeAgo(postedAt);
+
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    decompressContent(content.CONTENT)
+      .then((decompressedContent: any) => {
+        const contentData = JSON.parse(decompressedContent)[0]?.content;
+        const extractedText = extractAndJoinText(contentData);
+        setDescription(extractedText);
+      })
+      .catch((error) => {
+        console.error('Error during decompression or parsing:', error);
+      });
+  }, [content]);
 
   return (
     <Stack spacing={{ base: '1', md: '2' }} {...rootProps}>
@@ -51,7 +64,7 @@ export const ContentCard = (props: Props) => {
           },
         }}
       >
-        <Box position="relative">
+        <Box position="relative" display={imageUrl ? 'block' : 'none'}>
           <AspectRatio ratio={16 / 9} overflow="hidden">
             <Image
               src={imageUrl}
