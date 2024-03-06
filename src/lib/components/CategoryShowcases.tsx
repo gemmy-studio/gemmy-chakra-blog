@@ -31,7 +31,7 @@ export const CategoryShowcases: React.FC<CategoryShowcasesProps> = ({
 }) => {
   return (
     <Box
-      maxW="7xl"
+      maxW="8xl"
       mx="auto"
       px={{ base: '0', lg: '8' }}
       py={{ base: '0', lg: '8' }}

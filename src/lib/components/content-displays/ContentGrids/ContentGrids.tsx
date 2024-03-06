@@ -6,7 +6,7 @@ import { contents } from '../_data';
 
 export const ContentGrids = () => (
   <Box
-    maxW="7xl"
+    maxW="8xl"
     mx="auto"
     px={{ base: '4', md: '8' }}
     py={{ base: '12', md: '16' }}

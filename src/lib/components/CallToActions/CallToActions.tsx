@@ -35,7 +35,7 @@ export const CallToActions: React.FC<CallToActionsProps> = ({
   return (
     <Box as="section" bg="bg.surface">
       <Container
-        maxW="container.xl"
+        maxW="8xl"
         py={{ base: '16', md: '24' }}
         px={{ base: '4', md: '8' }}
       >

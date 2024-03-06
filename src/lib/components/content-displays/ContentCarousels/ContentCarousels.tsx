@@ -10,7 +10,7 @@ import { ViewAllCard } from '../ViewAllCard';
 
 export const ContentCarousels = () => (
   <Box
-    maxW="7xl"
+    maxW="8xl"
     mx="auto"
     px={{ base: '4', md: '8' }}
     pt={{ base: '12', md: '16' }}
